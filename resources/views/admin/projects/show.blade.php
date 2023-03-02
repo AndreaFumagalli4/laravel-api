@@ -15,13 +15,8 @@
                         #{{ $project->name }}
                     @endforeach
                 </div>
-                <div class="my-4">
-                    @if (str_starts_with($project->thumb, 'http'))
-                        <img src="{{ $project->thumb }}"
-                    @else 
-                        <img src="{{ asset('storage/' . $project->thumb) }}"
-                    @endif
-                        alt="Project image" class="img-fluid mt-3">
+                <div class="card-image mb-5">
+                    <img src="{{ $project->thumb }}" alt="{{ $project->thumb }} image" class="img-fluid">
                 </div>
                 <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-sm btn-success">
                     <i class="fa-regular fa-pen-to-square"></i>

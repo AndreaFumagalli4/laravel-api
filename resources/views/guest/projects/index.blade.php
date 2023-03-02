@@ -17,7 +17,7 @@
                     @endforeach
                 </div>
                 <div class="my-4">
-                    <img src="{{ asset('storage/' . $project->thumb) }}" alt="Project image" class="img-fluid">
+                    <img src="{{ $project->thumb }}" alt="Project image" class="img-fluid">
                 </div>
                 <a href="{{ $project->link }}" class="btn btn-sm btn-info">
                     Go to the project repository

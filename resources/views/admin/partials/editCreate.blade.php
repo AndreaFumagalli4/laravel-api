@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form class="mt-3" action="{{ route($route, $project->id) }}" method="POST" enctype="multipart/form-data">
+        <form class="mt-3" action="{{ route($route, $project->id) }}" method="POST">
             @csrf
             @method($method)
 
