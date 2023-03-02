@@ -54,8 +54,7 @@ class ProjectController extends Controller
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->save();
-        $newProject->technologies()->sync($data['technologies']);
-        
+        $newProject->technologies()->sync($data['technologies'] ?? []);
         return redirect()->route('admin.projects.show', $newProject->id);
     }
 
@@ -108,7 +107,7 @@ class ProjectController extends Controller
         }
 
         $project->update($data);
-        $project->technologies()->sync($data['technologies']);
+        $project->technologies()->sync($data['technologies'] ?? []);
         return redirect()->route('admin.projects.show', $project->id);
     }
 
