@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,8 +20,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::paginate(10);
-        $trashed = Project::onlyTrashed()->get()->count();
+        if (Auth::user()->roles()->pluck('id')->contains(1) || Auth::user()->roles()->pluck('id')->contains(2)){
+            $projects = Project::paginate(10);
+            $trashed = Project::onlyTrashed()->get()->count();
+        } else {
+            $projects = Project::where('user_id', Auth::user()->id)->paginate(10);
+            $trashed = Project::onlyTrashed()->get()->count();
+        }
         return view('admin.projects.index', compact('projects', 'trashed'));
     }
 
