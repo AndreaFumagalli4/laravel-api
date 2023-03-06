@@ -11,10 +11,14 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
     
-    protected $fillable = array('type_id', 'title', 'thumb', 'used_language', 'link');
+    protected $fillable = array('type_id', 'user_id', 'title', 'thumb', 'used_language', 'link');
 
     public function type() {
         return $this->belongsTo(Type::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     public function technologies() {

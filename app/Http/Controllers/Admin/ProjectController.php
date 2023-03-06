@@ -50,7 +50,7 @@ class ProjectController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|min:2|max:80|unique:projects',
-            'thumb' => 'required|image|max:500',
+            'thumb' => 'required|max:500',
             'link' => 'required|active_url',
             'type_id' => 'required|exists:types,id',
             'technologies' => 'array|exists:technologies,id'
